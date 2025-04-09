@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJEKT</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        input {
+            width: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Algorytm GHP</h2>
+<p>Na stanie: <input type="number" id="naStanie" value="20" min="0" oninput="calculateGRP()"></p>
+<p>Czas realizacji: <input type="number" id="czasRealizacji" value="1" min="1" oninput="calculateGRP()"></p>
+
+<table id="ghpTable">
+    <thead>
+        <tr>
+            <th>Kategoria</th>
+            <th>Tydzień 1</th>
+            <th>Tydzień 2</th>
+            <th>Tydzień 3</th>
+            <th>Tydzień 4</th>
+            <th>Tydzień 5</th>
+            <th>Tydzień 6</th>
+            <th>Tydzień 7</th>
+            <th>Tydzień 8</th>
+            <th>Tydzień 9</th>
+            <th>Tydzień 10</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr id="popyt">
+            <td>Przewidywany popyt</td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="20" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="40" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+        </tr>
+        <tr id="produkcja">
+            <td>Produkcja</td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="28" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="30" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+        </tr>
+        <tr id="dostepne">
+            <td>Dostępne</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+    </tbody>
+</table>
+
+<table id="mrpTable">
+    <h2>ALgorytm MRP</h2>
+    <p>BOM 1</p>
+    <p>Na stanie: <input type="number" id="naStanieMRP" value="40" min="0" oninput="calculateMRP()"></p>
+    <p>Czas realizacji: <input type="number" id="czasRealizacjiMRP" value="2" min="1" oninput="calculateMRP()"></p>
+
+
+    <thead>
+        <tr>
+            <th>Dane produkcyjne</th>
+            <th>Tydzień 1</th>
+            <th>Tydzień 2</th>
+            <th>Tydzień 3</th>
+            <th>Tydzień 4</th>
+            <th>Tydzień 5</th>
+            <th>Tydzień 6</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr id="zapotrzebownie">
+            <td>Całkowite zapotrzebowanie</td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+         
+        </tr>
+        <tr id="przyjecia">
+            <td>Planowane przyjęcia</td>
+            <td><input type="number" value="0" min=1></td>
+            <td><input type="number" value="0" min=1></td>
+            <td><input type="number" value="0" min=1></td>
+            <td><input type="number" value="0" min=1></td>
+            <td><input type="number" value="0" min=1></td>
+            <td><input type="number" value="0" min=1></td>
+        </tr>
+        <tr id="na_stanie">
+            <td>Przewidywane na stanie</td>
+            <td><input type="number" value="40" disabled></td>
+            <td><input type="number" value="40" disabled></td>
+            <td><input type="number" value="40" disabled></td>
+            <td><input type="number" value="40" disabled></td>
+            <td><input type="number" value="40" disabled></td>
+            <td><input type="number" value="40" disabled></td>
+        </tr>
+        <tr id="zap_netto">
+            <td>Zapotrzebowanie netto</td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+        </tr>
+        <tr id="zamowienia">
+            <td>Planowane zamówienia</td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+        </tr>
+        <tr id="przyjecia_zamowien">
+            <td>Planowane przyjęcie zamówień</td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+            <td><input type="number" value="0" disabled></td>
+        </tr>
+            
+       
+    </tbody>
+</table>
+
+<button onclick="calculateGRP()">Przelicz</button>
+
+<script>
+    let tygodnie = 10;
+    let poczatkowyStan = 20;
+    let popyt = [0, 0, 0, 0, 20, 0, 40, 0, 0, 0];
+    let produkcja = [0, 0, 0, 0, 28, 0, 30, 0, 0, 0];
+    let czasRealizacji = 1;
+
+    function createTable() {
+        let popytRow = document.getElementById("popyt");
+        let produkcjaRow = document.getElementById("produkcja");
+        let dostepneRow = document.getElementById("dostepne");
+
+        // Usuwamy kolumny po 10 tygodniu
+        let cells = popytRow.querySelectorAll('td');
+        cells.forEach((cell, index) => {
+            if (index > tygodnie) {
+                cell.remove();
+            }
+        });
+        
+        cells = produkcjaRow.querySelectorAll('td');
+        cells.forEach((cell, index) => {
+            if (index > tygodnie) {
+                cell.remove();
+            }
+        });
+
+        cells = dostepneRow.querySelectorAll('td');
+        cells.forEach((cell, index) => {
+            if (index > tygodnie) {
+                cell.remove();
+            }
+        });
+
+        calculateGRP();
+    }
+    
+
+    function calculateGRP() {
+    let popytCells = document.querySelectorAll("#popyt td input");
+    let produkcjaCells = document.querySelectorAll("#produkcja td input");
+    let dostepneCells = document.querySelectorAll("#dostepne td");
+    let zapotrzebowanieCells = document.querySelectorAll("#zapotrzebownie td input");
+    let czasRealizacji = parseInt(document.getElementById("czasRealizacji").value) || 1;
+
+    let dostepne = parseInt(document.getElementById("naStanie").value) || poczatkowyStan;
+    
+    // Obliczamy dostępność w tabeli GHP
+    for (let i = 0; i < tygodnie; i++) {
+        let popytT = parseInt(popytCells[i].value) || 0;
+        let produkcjaT = parseInt(produkcjaCells[i].value) || 0;
+
+        dostepne = dostepne - popytT + produkcjaT;
+        dostepneCells[i+1].innerText = dostepne;
+    }
+
+    for (let i = 0; i < tygodnie - czasRealizacji; i++) {
+        let produkcjaT = parseInt(produkcjaCells[i +czasRealizacji].value) || 0;
+        if (zapotrzebowanieCells[i]) {
+            zapotrzebowanieCells[i].value = produkcjaT;
+}
+      
+         }
+    }
+    function calculateMRP() {
+    let przewid_na_stanie = parseInt(document.getElementById("naStanieMRP").value) || 0;
+
+    let cells = document.querySelectorAll("#na_stanie td input");
+
+    // pole przewidywane na stanie usupełniane zgodnie z wartością z input
+    for (let i = 0; i < cells.length; i++) {
+        if (cells[i]) {
+            cells[i].value = przewid_na_stanie;
+        }
+    }
+
+
+
+}
+function compareZapotrzebowanie() {
+    // Odczytanie wartości z komórek
+    let zapotrzebowanieCells = document.querySelectorAll("#zapotrzebownie td input");
+    let naStanieCells = document.querySelectorAll("#na_stanie td input");
+
+    // Przechodzimy po komórkach i porównujemy wartości
+    for (let i = 0; i < zapotrzebowanieCells.length; i++) {
+        let zapotrzebowanieValue = parseInt(zapotrzebowanieCells[i].value) || 0;
+        let naStanieValue = parseInt(naStanieCells[i].value) || 0;
+
+        // Porównanie wartości
+        if (zapotrzebowanieValue > naStanieValue) {
+            // Zrobimy coś, jeśli zapotrzebowanie jest większe niż stan
+            console.log("Zapotrzebowanie jest większe niż stan w tygodniu " + (i + 1));
+        } else if (zapotrzebowanieValue < naStanieValue) {
+            // Zrobimy coś, jeśli zapotrzebowanie jest mniejsze niż stan
+            console.log("Stan jest większy niż zapotrzebowanie w tygodniu " + (i + 1));
+        } else {
+            // Zrobimy coś, jeśli zapotrzebowanie i stan są równe
+            console.log("Zapotrzebowanie i stan są równe w tygodniu " + (i + 1));
+        }
+    }
+}
+
+
+
+
+    document.getElementById("czasRealizacji").addEventListener('input', calculateGRP);
+    document.getElementById("naStanie").addEventListener('input', calculateGRP);
+    document.getElementById("naStanieMRP").addEventListener('input',calculateMRP)
+    document.getElementById("naStanieMRP").addEventListener('input', compareZapotrzebowanie);
+
+    
+    createTable();
+</script>
+
+</body>
+</html>
