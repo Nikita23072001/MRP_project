@@ -28,6 +28,7 @@
 <h2>Algorytm GHP - Produkt: Okno</h2>
 <p>Na stanie: <input type="number" id="naStanie" value="10" min="0" oninput="validateAndCalculateGRP()"></p>
 <p>Czas realizacji: <input type="number" id="czasRealizacji" value="1" min="1" oninput="if (this.value >= 1) calculateGRP()"></p>
+<script>
   function validateAndCalculateGRP() {
     const naStanieInput = document.getElementById("naStanie");
     const value = parseInt(naStanieInput.value);
@@ -38,7 +39,6 @@
     }
   }
 </script>
-<p>Czas realizacji: <input type="number" id="czasRealizacji" value="1" min="1" oninput="calculateGRP()"></p>
 
 <table id="ghpTable">
   <thead>
@@ -112,14 +112,21 @@ function calculateGRP() {
 
 function generateMRPTables() {
   const mrpDiv = document.getElementById("mrpTables");
+
+  // ⏺ Zapisujemy stare wartości przyjęć z inputów
+  const oldValues = {};
+  document.querySelectorAll("input[id$='_przyjecia_']").forEach(input => {
+    oldValues[input.id] = parseInt(input.value) || 0;
+  });
+
   mrpDiv.innerHTML = "";
 
   boms[1].forEach((bom, index) => {
     const idPrefix = bom.component.replace(/\s+/g, "") + index;
     mrpDiv.innerHTML += `
       <div class="bom-settings">
-        <label>${bom.component} - Na stanie: <input type="number" id="initialStock_${idPrefix}" value="35" min="0"></label>
-        <label> Czas realizacji: <input type="number" id="leadTime_${idPrefix}" value="2" min="1"></label>
+        <label>${bom.component} - Na stanie: <input type="number" id="initialStock_${idPrefix}" value="35" min="0" oninput="calculateGRP()"></label>
+        <label> Czas realizacji: <input type="number" id="leadTime_${idPrefix}" value="2" min="1" oninput="calculateGRP()"></label>
       </div>
     `;
   });
@@ -129,22 +136,29 @@ function generateMRPTables() {
     const zapotrzebowanie = produkcja.map(qty => qty * bom.quantity);
     const initialStock = parseInt(document.getElementById(`initialStock_${idPrefix}`).value) || 0;
     const leadTime = parseInt(document.getElementById(`leadTime_${idPrefix}`).value) || 1;
-    const table = createMRPTable(bom.component, zapotrzebowanie, initialStock, leadTime, 40, idPrefix);
+
+    // Zastosuj stare wartości przyjęć jeśli istnieją
+    const przyjeciaManualne = [];
+    for (let i = 0; i < tygodnie; i++) {
+      const key = `${idPrefix}_przyjecia_${i}`;
+      przyjeciaManualne[i] = oldValues[key] ?? 0;
+    }
+
+    const table = createMRPTable(bom.component, zapotrzebowanie, initialStock, leadTime, 40, idPrefix, przyjeciaManualne);
     mrpDiv.innerHTML += table;
   });
 }
 
-function createMRPTable(name, demand, initialStock, leadTime, batchSize, idPrefix) {
+
+function createMRPTable(name, demand, initialStock, leadTime, batchSize, idPrefix, przyjeciaManualne = []) {
   let calkowite = [...demand];
-  let przyjecia = Array(tygodnie).fill(0);
+  let przyjecia = przyjeciaManualne.slice();
   let naStanie = Array(tygodnie).fill(0);
   let netto = Array(tygodnie).fill(0);
   let zamowienia = Array(tygodnie).fill(0);
   let przyjeciaZamowien = Array(tygodnie).fill(0);
 
   for (let i = 0; i < tygodnie; i++) {
-    const input = document.getElementById(`${idPrefix}_przyjecia_${i}`);
-    if (input) przyjecia[i] = parseInt(input.value) || 0;
     naStanie[i] = (i === 0 ? initialStock : naStanie[i - 1]) + przyjecia[i] - calkowite[i];
 
     if (naStanie[i] < 0) {
@@ -152,7 +166,7 @@ function createMRPTable(name, demand, initialStock, leadTime, batchSize, idPrefi
       const ilosc = Math.ceil(netto[i] / batchSize) * batchSize;
       if (i - leadTime >= 0) {
         zamowienia[i - leadTime] = ilosc;
-        przyjecia[i] = ilosc;
+        przyjecia[i] += ilosc;
         naStanie[i] += ilosc;
         przyjeciaZamowien[i] = ilosc;
       }
