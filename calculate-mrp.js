@@ -1,6 +1,5 @@
 import { items } from "./mrp-data.js";
-import { calculateMRPFirst } from "./calculate-mrp-first.js";
-import { calculateMRPSecond } from "./calculate-mrp-second.js";
+import { calculateMRPFirst, calculateMRPSecond } from "./calculate-mrp-first.js";
 
 export function calculateMRPTables() {
   items.forEach((item) => {

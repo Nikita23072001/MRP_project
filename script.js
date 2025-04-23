@@ -15,10 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   generateAllTables();
-
-  // function calculateAllTables() {
-  //   [calculateMPSTable, calculateMRPTables].forEach((fn) => fn());
-  // }
+  
   function calculateAllTables() {
     calculateMPSTable();
     calculateMRPTables();

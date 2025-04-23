@@ -11,27 +11,6 @@ export const categoriesMPS = [
   },
 ];
 
-// export const categoriesMPS = [
-//   {
-//     name: "Przewidywany Popyt",
-//     className: "demandMPS",
-//   },
-//   {
-//     name: "Produkcja",
-//     className: "productionMPS",
-//   },
-//   {
-//     name: "Dostępne",
-//     className: "availableMPS",
-//   },
-// ];
-
-// export const categoriesMPS = {
-//   demandMPS: "Przewidywany Popyt",
-//   productionMPS: "Produkcja",
-//   availableMPS: "Dostępne",
-// };
-
 export const productionParametersMPS = [
   {
     name: "Na stanie",
@@ -42,10 +21,5 @@ export const productionParametersMPS = [
     name: "Czas realizacji",
     className: "leadTime",
     value: 1,
-  },
-  {
-    name: "Okres",
-    className: "weeksNumber",
-    value: 10,
   },
 ];

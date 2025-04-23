@@ -4,9 +4,8 @@ console.log("$", categoriesMPS);
 export function generateMPSTable() {
   const tbody = document.getElementById("table-body");
   const thead = document.getElementById("table-head");
-  const weeksInput = document.getElementById("weeksNumber");
 
-  let weeksNumber = parseInt(weeksInput.value) || 10;
+  let weeksNumber = 10;
 
   // Generowanie nagłówka tabeli
   thead.innerHTML = "";

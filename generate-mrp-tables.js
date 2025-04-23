@@ -9,7 +9,6 @@ export function generateMRPTables() {
 function generateTableForItem(item) {
   const tbody = document.getElementById(`table-body-${item.className}`);
   const thead = document.getElementById(`table-head-${item.className}`);
-  const weeksInput = document.getElementById("weeksNumber");
 
   let weeksNumber = 10;
 
