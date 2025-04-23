@@ -1,4 +1,4 @@
-import { categoriesData, productionParameters } from "./mrp-data.js";
+import { categoriesData, productionParameters } from "./data.js";
 
 export function calculateMRPFirst(item) {
   if (item.level !== 1) return;

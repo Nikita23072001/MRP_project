@@ -1,4 +1,4 @@
-import { productMPS, productionParametersMPS } from "./mps-data.js";
+import { productMPS, productionParametersMPS } from "./data.js";
 
 export const generateMPS = () => {
   const container = document.getElementById("mps-item-container");

@@ -1,4 +1,4 @@
-import { items, categoriesData } from "./mrp-data.js";
+import { items, categoriesData } from "./data.js";
 
 export function generateMRPTables() {
   items.forEach((item) => {

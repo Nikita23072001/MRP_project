@@ -1,4 +1,4 @@
-import { items, productionParameters } from "./mrp-data.js";
+import { items, productionParameters } from "./data.js";
 
 export const generateMRPItems = () => {
   const container = document.getElementById("mrp-tables-container");

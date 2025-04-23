@@ -1,4 +1,4 @@
-import { categoriesMPS } from "./mps-data.js";
+import { categoriesMPS } from "./data.js";
 console.log("$", categoriesMPS);
 
 export function generateMPSTable() {
