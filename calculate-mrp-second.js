@@ -139,9 +139,9 @@ export function calculateMRPSecond(item) {
     let element = document.getElementById(elementId);
     if (element) {
       if (colorWarning[index]) {
-        element.classList.add("bg-red-600");
+        element.classList.add("border-zinc-400");
       } else {
-        element.classList.remove("bg-red-600");
+        element.classList.remove("border-zinc-400");
       }
       element.value = val;
       val === 0 && (element.value = null);

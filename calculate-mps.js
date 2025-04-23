@@ -1,7 +1,6 @@
 export function calculateMPSTable() {
   let inStock = parseInt(document.getElementById("inStock").value);
-  let weeksNumber =
-    parseInt(document.getElementById("weeksNumber").value) || 10;
+  let weeksNumber = 10;
 
   let demandMPS = Array.from(document.querySelectorAll(".demandMPS")).map(
     (el) => parseInt(el.value) || 0

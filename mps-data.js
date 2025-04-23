@@ -36,7 +36,7 @@ export const productionParametersMPS = [
   {
     name: "Na stanie",
     className: "inStock",
-    value: 2,
+    value: 10,
   },
   {
     name: "Czas realizacji",
@@ -44,7 +44,7 @@ export const productionParametersMPS = [
     value: 1,
   },
   {
-    name: "Liczba tygodni",
+    name: "Okres",
     className: "weeksNumber",
     value: 10,
   },

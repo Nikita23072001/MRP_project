@@ -11,7 +11,7 @@ function generateTableForItem(item) {
   const thead = document.getElementById(`table-head-${item.className}`);
   const weeksInput = document.getElementById("weeksNumber");
 
-  let weeksNumber = parseInt(weeksInput.value) || 10;
+  let weeksNumber = 10;
 
   // Generowanie nagłówka tabeli
   thead.innerHTML = "";
@@ -98,79 +98,79 @@ function generateTableForItem(item) {
 
       if (item.level === 1) {
         if (categoryIndex === 0) {
-          tdLabel.classList.add("bg-yellow-300");
-          td.classList.add("bg-yellow-300");
-          input.classList.add("bg-yellow-300");
+          tdLabel.classList.add("border-zinc-400");
+          td.classList.add("border-zinc-400");
+          input.classList.add("border-zinc-400");
           input.value = 0;
           input.readOnly = true;
         } else if (categoryIndex === 2) {
           input.readOnly = true;
           input.value = 0;
-          tdLabel.classList.add("bg-gray-50");
-          td.classList.add("bg-gray-50");
-          input.classList.add("bg-gray-50");
+          tdLabel.classList.add("border-zinc-400");
+          td.classList.add("border-zinc-400");
+          input.classList.add("border-zinc-400");
         } else if (categoryIndex === 3) {
           input.readOnly = true;
           input.value = 0;
-          tdLabel.classList.add("bg-gray-100");
-          td.classList.add("bg-gray-100");
-          input.classList.add("bg-gray-100");
+          tdLabel.classList.add("border-zinc-400");
+          td.classList.add("border-zinc-400");
+          input.classList.add("border-zinc-400");
         } else if (categoryIndex === 4) {
-          tdLabel.classList.add("bg-green-300");
-          td.classList.add("bg-green-300");
-          input.classList.add("bg-green-300");
+          tdLabel.classList.add("border-zinc-400");
+          td.classList.add("border-zinc-400");
+          input.classList.add("border-zinc-400");
           input.value = 0;
           input.readOnly = true;
         } else if (categoryIndex === 5) {
-          tdLabel.classList.add("bg-cyan-300");
-          td.classList.add("bg-cyan-300");
-          input.classList.add("bg-cyan-300");
+          tdLabel.classList.add("border-zinc-400");
+          td.classList.add("border-zinc-400");
+          input.classList.add("border-zinc-400");
           input.value = 0;
           input.readOnly = true;
         } else {
           input.value = 0;
-          tdLabel.classList.add("bg-gray-100");
-          td.classList.add("bg-gray-100");
-          input.classList.add("bg-gray-100");
+          tdLabel.classList.add("border-zinc-400");
+          td.classList.add("border-zinc-400");
+          input.classList.add("border-zinc-400");
         }
 
         td.appendChild(input);
         tr.appendChild(td);
       } else if (item.level === 2) {
         if (categoryIndex === 0) {
-          tdLabel.classList.add("bg-green-300");
-          td.classList.add("bg-green-300");
-          input.classList.add("bg-green-300");
+          tdLabel.classList.add("border-zinc-400");
+          td.classList.add("border-zinc-400");
+          input.classList.add("border-zinc-400");
           input.value = 0;
           input.readOnly = true;
         } else if (categoryIndex === 1) {
-          tdLabel.classList.add("bg-gray-50");
-          td.classList.add("bg-gray-50");
-          input.classList.add("bg-gray-50");
+          tdLabel.classList.add("border-zinc-400");
+          td.classList.add("border-zinc-400");
+          input.classList.add("border-zinc-400");
           // input.readOnly = true;
           input.value = 0;
         } else if (categoryIndex === 2) {
-          tdLabel.classList.add("bg-gray-100");
-          td.classList.add("bg-gray-100");
-          input.classList.add("bg-gray-100");
+          tdLabel.classList.add("border-zinc-400");
+          td.classList.add("border-zinc-400");
+          input.classList.add("border-zinc-400");
           input.readOnly = true;
           input.value = 0;
         } else if (categoryIndex === 3) {
-          tdLabel.classList.add("bg-gray-50");
-          td.classList.add("bg-gray-50");
-          input.classList.add("bg-gray-50");
+          tdLabel.classList.add("border-zinc-400");
+          td.classList.add("border-zinc-400");
+          input.classList.add("border-zinc-400");
           input.readOnly = true;
           input.value = 0;
         } else if (categoryIndex === 4) {
-          tdLabel.classList.add("bg-gray-100");
-          td.classList.add("bg-gray-100");
-          input.classList.add("bg-gray-100");
+          tdLabel.classList.add("border-zinc-400");
+          td.classList.add("border-zinc-400");
+          input.classList.add("border-zinc-400");
           input.readOnly = true;
           input.value = 0;
         } else if (categoryIndex === 5) {
-          tdLabel.classList.add("bg-gray-50");
-          td.classList.add("bg-gray-50");
-          input.classList.add("bg-gray-50");
+          tdLabel.classList.add("border-zinc-400");
+          td.classList.add("border-zinc-400");
+          input.classList.add("border-zinc-400");
           input.readOnly = true;
           input.value = 0;
         } else {

@@ -31,13 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // Obsługa zmian w input
-  const weeksInput = document.getElementById("weeksNumber");
-  weeksInput.addEventListener("input", () => {
-    // Zakładając, że generowanie tabeli zależy od zmiany inputu
-    generateAllTables();
-  });
-
   // Funkcja do obliczeń
   function calculateAllTables() {
     Promise.all([calculateMPSTable(), calculateMRPTables()])

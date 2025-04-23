@@ -16,9 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   generateAllTables();
 
-  const weeksInput = document.getElementById("weeksNumber");
-  weeksInput.addEventListener("input", generateAllTables);
-
   function calculateAllTables() {
     [calculateMPSTable, calculateMRPTables].forEach((fn) => fn());
   }

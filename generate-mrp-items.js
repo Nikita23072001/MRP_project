@@ -7,7 +7,7 @@ export const generateMRPItems = () => {
       .map(
         (item) => `
             <div class='bg-white p-6 rounded-lg shadow-md'>
-              <h3 class='text-xl text-center font-semibold mb-4'>MRP Iteracja dla ${
+              <h3 class='text-xl text-center font-semibold mb-4'> ${
                 item.name
               }</h3>
               <div class='grid grid-cols-2 md:grid-cols-4 gap-4'>

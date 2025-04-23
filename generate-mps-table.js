@@ -104,9 +104,9 @@ export function generateMPSTable() {
           input.value = i === 5 ? 20 : i === 7 ? 40 : 0; // Wartości domyślne
         } else if (className === "productionMPS") {
           // "Produkcja"
-          tdLabel.classList.add("bg-yellow-300");
-          td.classList.add("bg-yellow-300");
-          input.classList.add("bg-yellow-300");
+          tdLabel.classList.add("bg-white-100");
+          td.classList.add("bg-white-300");
+          input.classList.add("bg-white-300");
           input.value = i === 5 ? 18 : i === 7 ? 40 : 0; // Wartości domyślne
         } else {
           input.value = 0;

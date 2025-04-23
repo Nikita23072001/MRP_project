@@ -3,8 +3,7 @@ import { categoriesData, productionParameters } from "./mrp-data.js";
 export function calculateMRPFirst(item) {
   if (item.level !== 1) return;
 
-  let weeksNumber =
-    parseInt(document.getElementById("weeksNumber").value) || 10;
+  let weeksNumber = 10;
 
   const leadTimeMPS =
     parseInt(
@@ -115,9 +114,9 @@ export function calculateMRPFirst(item) {
     );
     el.value = val;
     if (colorWarning[index]) {
-      el.classList.add("bg-red-600");
+      el.classList.add("border-zinc-400");
     } else {
-      el.classList.remove("bg-red-600");
+      el.classList.remove("border-zinc-400");
     }
   });
 
