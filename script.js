@@ -2,7 +2,7 @@ import { generateMPS } from "./generate-mps-item.js";
 import { generateMPSTable } from "./generate-mps-table.js";
 import { generateMRPItems } from "./generate-mrp-items.js";
 import { generateMRPTables } from "./generate-mrp-tables.js";
-import { calculateMPSTable } from "./calculate-mps.js";
+import { calculateMPSTable } from "./ghp-calc.js";
 import { calculateMRPTables } from "./calculate-mrp.js";
 
 document.addEventListener("DOMContentLoaded", () => {
